@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicious Eats Restaurant Order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            padding: 20px;
+        }
+        .dish {
+            border: 1px solid #ddd;
+            padding: 15px;
+            background-color: white;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .order-form {
+            max-width: 400px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .order-form label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .order-form input,
+        .order-form select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .order-form button {
+            background-color: #333;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin-top: 10px;
+        }
+        .order-form button:hover {
+            background-color: #555;
+        }
+        .shopping-cart {
+            max-width: 400px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .checkout-button {
+            background-color: #333;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin-top: 10px;
+        }
+        .checkout-button:hover {
+            background-color: #555;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        footer button {
+            background-color: #333;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        footer button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Italian Restaurant</h1>
+    </header>
+
+    <div class="container">
+        <!-- Dishes Section -->
+        <section class="dishes">
+            <div class="dish" onclick="addToCart('Spaghetti Bolognese', 12.99)">
+                <h2>Spaghetti Bolognese</h2>
+                <p>Delicious spaghetti with Bolognese sauce.</p>
+                <p>Price: $12.99</p>
+            </div>
+
+            <div class="dish" onclick="addToCart('Margherita Pizza', 14.99)">
+                <h2>Margherita Pizza</h2>
+                <p>Classic Margherita pizza with fresh tomatoes and mozzarella.</p>
+                <p>Price: $14.99</p>
+            </div>
+
+            <div class="dish" onclick="addToCart('Chicken Alfredo', 16.99)">
+                <h2>Chicken Alfredo</h2>
+                <p>Creamy Alfredo sauce with grilled chicken over fettuccine pasta.</p>
+                <p>Price: $16.99</p>
+            </div>
+
+            <div class="dish" onclick="addToCart('Vegetarian Lasagna', 13.99)">
+                <h2>Vegetarian Lasagna</h2>
+                <p>Layers of pasta, marinara sauce, ricotta, and mixed vegetables.</p>
+                <p>Price: $13.99</p>
+            </div>
+        </section>
+
+        <!-- Order Form and Checkout Section -->
+        <section class="order-section">
+            <div class="order-form">
+                <h2>Order Form</h2>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="dish">Selected Dish:</label>
+                <select id="dish" name="dish"></select>
+
+                <button onclick="addToCartFromForm()">Add to Cart</button>
+            </div>
+
+            <div class="shopping-cart" id="shopping-cart">
+                <h2>Shopping Cart</h2>
+                <!-- Cart items will be dynamically added using JavaScript -->
+                <button class="checkout-button" onclick="checkout()">Checkout</button>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <button onclick="redirectToIndex()">Home</button>
+    </footer>
+
+    <script>
+        const cart = [];
+
+        function addToCart(dish, price) {
+            const existingItem = cart.find(item => item.dish === dish);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ dish, price, quantity: 1 });
+            }
+
+            updateDishOptions();
+            updateShoppingCart();
+        }
+
+        function addToCartFromForm() {
+            const selectedDish = document.getElementById('dish').value;
+            const dishObject = findDishByName(selectedDish);
+
+            if (dishObject) {
+                const existingItem = cart.find(item => item.dish === dishObject.dish);
+
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({ ...dishObject, quantity: 1 });
+                }
+
+                updateShoppingCart();
+            }
+        }
+
+        function updateDishOptions() {
+            const dishSelect = document.getElementById('dish');
+            dishSelect.innerHTML = '';
+
+            cart.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.dish;
+                option.textContent = `${item.dish} - $${item.price.toFixed(2)}`;
+                dishSelect.appendChild(option);
+            });
+        }
+
+        function findDishByName(name) {
+            return cart.find(item => item.dish === name);
+        }
+
+        function updateShoppingCart() {
+            const shoppingCart = document.getElementById('shopping-cart');
+            shoppingCart.innerHTML = '<h2>Shopping Cart</h2>';
+
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'dish';
+                cartItem.innerHTML = `
+                    <p>${item.dish} - $${item.price.toFixed(2)} (${item.quantity} ${item.quantity > 1 ? 'items' : 'item'})</p>
+                `;
+                shoppingCart.appendChild(cartItem);
+            });
+
+            const checkoutButton = document.createElement('button');
+            checkoutButton.className = 'checkout-button';
+            checkoutButton.textContent = 'Checkout';
+            checkoutButton.onclick = checkout;
+            shoppingCart.appendChild(checkoutButton);
+        }
+
+        function checkout() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            if (cart.length === 0 || !name || !email) {
+                alert('Please fill in all the details and select at least one dish.');
+                return;
+            }
+
+            // In a real-world scenario, you would implement further processing or redirect to a payment gateway.
+            alert(`Order placed successfully!\nName: ${name}\nEmail: ${email}\nTotal: $${calculateTotal().toFixed(2)}`);
+            resetForm();
+        }
+
+        function calculateTotal() {
+            return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+        }
+
+        function resetForm() {
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            cart.length = 0;
+            updateDishOptions();
+            updateShoppingCart();
+        }
+
+        function redirectToIndex() {
+            window.location.href = 'index.html';
+        }
+    </script>
+
+</body>
+</html>

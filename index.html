@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2VMXH4Q73V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2VMXH4Q73V');
+</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url('bg.webp');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    header {
+        background-color: #333;
+        color: white;
+        padding: 15px;
+        text-align: center;
+    }
+    nav {
+        background-color: #444;
+        overflow: hidden;
+    }
+    nav a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    nav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    section {
+        padding: 20px;
+    }
+    .recipe {
+        display: flex;
+        border: 1px solid #ddd;
+        margin: 10px;
+        padding: 15px;
+        background-color: white;
+        border-radius: 5px;
+    }
+    .contact-form {
+        max-width: 400px;
+        margin: 20px auto;
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .contact-form label {
+        display: block;
+        margin-bottom: 8px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 16px;
+        box-sizing: border-box;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    .contact-form button {
+        background-color: #333;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .contact-form button:hover {
+        background-color: #555;
+    }
+    .order-button {
+        display: block;
+        background-color: #333;
+        color: white;
+        padding: 10px 15px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .order-button:hover {
+        background-color: #555;
+    }
+    .location {
+        color: white;
+    }
+
+    /* Media query for screens smaller than 768px (typical mobile devices) */
+    @media only screen and (max-width: 768px) {
+        .recipe img {
+            max-width: 100%; /* Ensures images don't exceed screen width */
+            height: auto; /* Maintains aspect ratio */
+        }
+    }
+
+    /* Media query for screens larger than 768px (typical laptops/desktops) */
+    @media only screen and (min-width: 769px) {
+        .recipe img {
+            max-width: 500px; /* Limits image width on larger screens */
+            height: auto; /* Maintains aspect ratio */
+        }
+    }
+</style>
+</head>
+<body>
+
+    <header>
+        <h1>Delicious Eats Restaurant</h1>
+    </header>
+
+    <nav>
+        <a href="#" onclick="showHomePage()">Home</a>
+        <a href="#" onclick="showRecipes()">Recipes</a>
+        <a href="#" onclick="showLocations()">Locations</a>
+        <a href="#" onclick="showContactUs()">Contact Us</a>
+        <a href="#" onclick="showErrorPage()">Error</a>
+    </nav>
+
+    <section id="content">
+        <!-- Content will be dynamically loaded here -->
+    </section>
+
+    <script>
+        function showHomePage() {
+            document.getElementById('content').innerHTML = `
+                <h2 style="color:white;">Welcome to Delicious Eats Restaurant!</h2>
+                <p style="color: white;">Explore our delicious recipes by clicking on the Recipes link in the navigation bar.</p>
+                <a class="order-button" href="food ordering.html" target="_blank">Place Online Order</a>
+            `;
+        }
+
+        function showRecipes() {
+            document.getElementById('content').innerHTML = `
+               <div class="recipe">
+    <h2>Spaghetti Bolognese</h2>
+    <img src="sp-r.webp" srcset="sp-r-500.webp 500w, sp-r-800.webp 800w" alt="Spaghetti Bolognese">
+    <div>
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>400g spaghetti</li>
+            <li>500g ground beef</li>
+            <li>1 onion, chopped</li>
+            <li>2 cloves garlic, minced</li>
+            <li>1 can (400g) crushed tomatoes</li>
+            <li>2 tablespoons tomato paste</li>
+            <li>1 teaspoon dried oregano</li>
+            <li>1 teaspoon dried basil</li>
+            <li>Salt and pepper to taste</li>
+            <li>Grated Parmesan cheese for serving</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Cook the spaghetti according to package instructions.</li>
+            <li>In a large pan, brown the ground beef over medium heat.</li>
+            <li>Add chopped onion and minced garlic, cook until softened.</li>
+            <li>Stir in crushed tomatoes, tomato paste, oregano, basil, salt, and pepper.</li>
+            <li>Simmer the sauce for 15-20 minutes, stirring occasionally.</li>
+            <li>Serve the sauce over cooked spaghetti, garnish with Parmesan cheese.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe">
+    <h2>Vegetarian Stir-Fry</h2>
+    <img src="veg-st.webp" srcset="veg-st-500.webp 500w, veg-st-800.webp 800w" alt="Vegetarian Stir-Fry">
+    <div>
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>2 cups mixed vegetables (broccoli, bell peppers, carrots)</li>
+            <li>200g tofu, cubed</li>
+            <li>3 tablespoons soy sauce</li>
+            <li>1 tablespoon sesame oil</li>
+            <li>1 tablespoon vegetable oil</li>
+            <li>1 teaspoon minced ginger</li>
+            <li>2 cloves garlic, minced</li>
+            <li>2 green onions, sliced</li>
+            <li>Cooked rice for serving</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Heat vegetable oil in a wok or large pan over medium-high heat.</li>
+            <li>Add tofu cubes and cook until golden brown. Remove from the pan.</li>
+            <li>In the same pan, add sesame oil, minced ginger, and garlic. Sauté for 1-2 minutes.</li>
+            <li>Add mixed vegetables and stir-fry until tender-crisp.</li>
+            <li>Return cooked tofu to the pan, add soy sauce, and toss to combine.</li>
+            <li>Serve the stir-fry over cooked rice, garnish with sliced green onions.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe">
+    <h2>Grilled Chicken Caesar Salad</h2>
+    <img src="1.webp" srcset="1-500.webp 500w, 1-800.webp 800w" alt="Grilled Chicken Caesar Salad">
+    <div>
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>2 chicken breasts</li>
+            <li>Romaine lettuce</li>
+            <li>Croutons</li>
+            <li>Shaved Parmesan cheese</li>
+            <li>Caesar dressing</li>
+            <li>Salt and pepper to taste</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Season chicken breasts with salt and pepper, then grill until cooked through.</li>
+            <li>Chop romaine lettuce and place in a bowl.</li>
+            <li>Slice grilled chicken and add to the bowl.</li>
+            <li>Top with croutons, shaved Parmesan cheese, and Caesar dressing.</li>
+            <li>Toss everything together and serve immediately.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe">
+    <h2>Classic Margherita Pizza</h2>
+    <img src="2.webp" srcset="2-500.webp 500w, 2-800.webp 800w" alt="Classic Margherita Pizza">
+    <div>
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>1 pizza dough</li>
+            <li>1/2 cup pizza sauce</li>
+            <li>1 1/2 cups shredded mozzarella cheese</li>
+            <li>Fresh basil leaves</li>
+            <li>Olive oil</li>
+            <li>Salt and pepper to taste</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Preheat your oven to 475°F (245°C).</li>
+            <li>Roll out the pizza dough on a floured surface to your desired thickness.</li>
+            <li>Spread pizza sauce evenly over the dough.</li>
+            <li>Top with shredded mozzarella cheese and fresh basil leaves.</li>
+            <li>Drizzle with olive oil and season with salt and pepper.</li>
+            <li>Bake in the preheated oven for 10-12 minutes, or until the crust is golden and the cheese is bubbly.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe">
+    <h2>Chicken Alfredo Pasta</h2>
+    <img src="3.webp" srcset="3-500.webp 500w, 3-800.webp 800w" alt="Chicken Alfredo Pasta">
+    <div>
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>8 oz fettuccine pasta</li>
+            <li>2 chicken breasts, diced</li>
+            <li>2 tablespoons butter</li>
+            <li>2 cloves garlic, minced</li>
+            <li>1 cup heavy cream</li>
+            <li>1 cup grated Parmesan cheese</li>
+            <li>Salt and pepper to taste</li>
+            <li>Fresh parsley for garnish</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Cook fettuccine pasta according to package instructions.</li>
+            <li>In a large skillet, melt butter over medium heat. Add diced chicken and cook until no longer pink.</li>
+            <li>Add minced garlic and cook until fragrant.</li>
+            <li>Pour in heavy cream and simmer until slightly thickened.</li>
+            <li>Stir in grated Parmesan cheese until melted and smooth.</li>
+            <li>Season with salt and pepper to taste.</li>
+            <li>Toss cooked pasta with the sauce and serve garnished with fresh parsley.</li>
+        </ol>
+    </div>
+</div>
+
+<div class="recipe">
+    <h2>Beef Tacos</h2>
+    <img src="4.webp" srcset="4-500.webp 500w, 4-800.webp 800w" alt="Beef Tacos">
+    <div>
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>1 lb ground beef</li>
+            <li>1 packet taco seasoning</li>
+            <li>12 small corn tortillas</li>
+            <li>Shredded lettuce</li>
+            <li>Diced tomatoes</li>
+            <li>Shredded cheddar cheese</li>
+            <li>Sour cream</li>
+            <li>Salsa</li>
+            <li>Chopped cilantro</li>
+        </ul>
+        <h3>Instructions:</h3>
+        <ol>
+            <li>In a skillet, brown ground beef over medium heat. Drain excess fat.</li>
+            <li>Add taco seasoning and water according to packet instructions. Simmer until thickened.</li>
+            <li>Warm corn tortillas in a dry skillet or microwave.</li>
+            <li>Fill each tortilla with beef mixture, lettuce, tomatoes, cheese, sour cream, salsa, and cilantro.</li>
+            <li>Serve immediately.</li>
+        </ol>
+    </div>
+
+        <!-- Recipe 5 -->
+<div class="recipe">
+    <h2>Chocolate Chip Cookies</h2>
+    <img src="5.webp" srcset="5.webp 500w, 5.webp 800w" alt="Chocolate Chip Cookies" style="width:100%;max-width:500px;height:auto;">
+    <h3>Ingredients:</h3>
+    <ul>
+        <li>1 cup (2 sticks) unsalted butter, softened</li>
+        <li>3/4 cup granulated sugar</li>
+        <li>3/4 cup packed brown sugar</li>
+        <li>2 large eggs</li>
+        <li>1 teaspoon vanilla extract</li>
+        <li>2 1/4 cups all-purpose flour</li>
+        <li>1 teaspoon baking soda</li>
+        <li>1/2 teaspoon salt</li>
+        <li>2 cups semisweet chocolate chips</li>
+    </ul>
+    <h3>Instructions:</h3>
+    <ol>
+        <li>Preheat oven to 375°F (190°C). Line baking sheets with parchment paper.</li>
+        <li>In a large bowl, cream together butter, granulated sugar, and brown sugar until light and fluffy.</li>
+        <li>Beat in eggs, one at a time, then stir in vanilla.</li>
+        <li>In a separate bowl, combine flour, baking soda, and salt. Gradually add to the creamed mixture and mix well.</li>
+        <li>Stir in chocolate chips.</li>
+        <li>Drop dough by rounded tablespoonfuls onto prepared baking sheets.</li>
+        <li>Bake for 9-11 minutes or until golden brown. Cool on baking sheets for 2 minutes before transferring to wire racks to cool completely.</li>
+    </ol>
+</div>
+
+<!-- Recipe 6 -->
+<div class="recipe">
+    <h2>Vegetable Lasagna</h2>
+    <img src="6.webp" srcset="6.webp 500w, 6.webp 800w" alt="Vegetable Lasagna" style="width:100%;max-width:500px;height:auto;">
+    <h3>Ingredients:</h3>
+    <ul>
+        <li>9 lasagna noodles, cooked</li>
+        <li>2 cups marinara sauce</li>
+        <li>2 cups ricotta cheese</li>
+        <li>1 cup shredded mozzarella cheese</li>
+        <li>1/2 cup grated Parmesan cheese</li>
+        <li>2 cups mixed vegetables (zucchini, bell peppers, mushrooms, spinach)</li>
+        <li>2 cloves garlic, minced</li>
+        <li>1 teaspoon dried basil</li>
+        <li>1 teaspoon dried oregano</li>
+        <li>Salt and pepper to taste</li>
+    </ul>
+    <h3>Instructions:</h3>
+    <ol>
+        <li>Preheat oven to 375°F (190°C). Grease a 9x13-inch baking dish.</li>
+        <li>In a skillet, sauté garlic and mixed vegetables until tender.</li>
+        <li>In a bowl, mix together ricotta cheese, mozzarella cheese, Parmesan cheese, basil, oregano, salt, and pepper.</li>
+        <li>Spread a thin layer of marinara sauce on the bottom of the prepared baking dish.</li>
+        <li>Layer with cooked lasagna noodles, ricotta cheese mixture, sautéed vegetables, and marinara sauce.</li>
+        <li>Repeat layers until all ingredients are used up, ending with a layer of marinara sauce on top.</li>
+        <li>Cover with foil and bake for 25 minutes. Remove foil and bake for an additional 10 minutes, or until bubbly and golden.</li>
+    </ol>
+</div>
+
+<!-- Recipe 7 -->
+<div class="recipe">
+    <h2>Beef Stroganoff</h2>
+    <img src="7.webp" srcset="7.webp 500w, 7.webp 800w" alt="Beef Stroganoff" style="width:100%;max-width:500px;height:auto;">
+    <h3>Ingredients:</h3>
+    <ul>
+        <li>1 lb beef sirloin, thinly sliced</li>
+        <li>8 oz sliced mushrooms</li>
+        <li>1 onion, chopped</li>
+        <li>2 cloves garlic, minced</li>
+        <li>2 tablespoons butter</li>
+        <li>1 1/2 cups beef broth</li>
+        <li>1 cup sour cream</li>
+        <li>2 tablespoons all-purpose flour</li>
+        <li>Salt and pepper to taste</li>
+        <li>Cooked egg noodles for serving</li>
+        <li>Fresh parsley for garnish</li>
+    </ul>
+    <h3>Instructions:</h3>
+    <ol>
+        <li>In a large skillet, melt butter over medium heat. Add sliced beef and cook until browned. Remove from skillet and set aside.</li>
+        <li>In the same skillet, sauté mushrooms and onion until tender. Add minced garlic and cook until fragrant.</li>
+        <li>Stir in flour and cook for 1 minute. Gradually add beef broth, stirring constantly.</li>
+        <li>Return cooked beef to the skillet. Simmer until the sauce thickens.</li>
+        <li>Remove from heat and stir in sour cream. Season with salt and pepper to taste.</li>
+        <li>Serve over cooked egg noodles, garnished with fresh parsley.</li>
+    </ol>
+</div>
+
+<!-- Recipe 8 -->
+<div class="recipe">
+    <h2>Shrimp Scampi</h2>
+    <img src="8.webp" srcset="8.webp 500w, 8.webp 800w" alt="Shrimp Scampi" style="width:100%;max-width:500px;height:auto;">
+    <h3>Ingredients:</h3>
+    <ul>
+        <li>1 lb large shrimp, peeled and deveined</li>
+        <li>8 oz linguine pasta</li>
+        <li>4 tablespoons unsalted butter</li>
+        <li>4 cloves garlic, minced</li>
+        <li>1/2 cup white wine</li>
+        <li>1/4 cup freshly squeezed lemon juice</li>
+        <li>Zest of 1 lemon</li>
+        <li>1/4 teaspoon red pepper flakes</li>
+        <li>Salt and pepper to taste</li>
+        <li>Chopped fresh parsley for garnish</li>
+    </ul>
+    <h3>Instructions:</h3>
+    <ol>
+        <li>Cook linguine pasta according to package instructions.</li>
+        <li>In a large skillet, melt butter over medium heat. Add minced garlic and sauté until fragrant.</li>
+        <li>Add shrimp to the skillet and cook until pink and opaque.</li>
+        <li>Stir in white wine, lemon juice, lemon zest, and red pepper flakes. Simmer until slightly reduced.</li>
+        <li>Season with salt and pepper to taste.</li>
+        <li>Toss cooked linguine with the shrimp mixture until well coated.</li>
+        <li>Serve immediately, garnished with chopped fresh parsley.</li>
+    </ol>
+</div>
+
+<!-- Recipe 9 -->
+<div class="recipe">
+    <h2>Chicken Teriyaki Stir-Fry</h2>
+    <img src="9.webp" srcset="9.webp 500w, 9.webp 800w" alt="Chicken Teriyaki Stir-Fry" style="width:100%;max-width:500px;height:auto;">
+    <h3>Ingredients:</h3>
+    <ul>
+        <li>2 boneless, skinless chicken breasts, sliced</li>
+        <li>2 cups mixed vegetables (bell peppers, broccoli, carrots)</li>
+        <li>1/2 cup teriyaki sauce</li>
+        <li>2 tablespoons soy sauce</li>
+        <li>1 tablespoon sesame oil</li>
+        <li>2 cloves garlic, minced</li>
+        <li>1 teaspoon minced ginger</li>
+        <li>2 tablespoons vegetable oil</li>
+        <li>Cooked rice for serving</li>
+        <li>Sesame seeds for garnish</li>
+        <li>Sliced green onions for garnish</li>
+    </ul>
+    <h3>Instructions:</h3>
+    <ol>
+        <li>In a bowl, combine teriyaki sauce, soy sauce, sesame oil, minced garlic, and minced ginger. Set aside.</li>
+        <li>Heat vegetable oil in a large skillet or wok over medium-high heat.</li>
+        <li>Add sliced chicken and stir-fry until cooked through. Remove from skillet and set aside.</li>
+        <li>In the same skillet, stir-fry mixed vegetables until tender-crisp.</li>
+        <li>Return cooked chicken to the skillet and pour in the sauce mixture.</li>
+        <li>Cook, stirring constantly, until the sauce thickens and coats the chicken and vegetables.</li>
+        <li>Serve over cooked rice, garnished with sesame seeds and sliced green onions.</li>
+    </ol>
+</div>
+
+<!-- Recipe 10 -->
+<div class="recipe">
+    <h2>Caprese Salad</h2>
+    <img src="10.webp" srcset="10.webp 500w, 10.webp 800w" alt="Caprese Salad" style="width:100%;max-width:500px;height:auto;">
+    <h3>Ingredients:</h3>
+    <ul>
+        <li>2 large tomatoes, sliced</li>
+        <li>8 oz fresh mozzarella cheese, sliced</li>
+        <li>1/4 cup fresh basil leaves</li>
+        <li>2 tablespoons balsamic glaze</li>
+        <li>2 tablespoons extra virgin olive oil</li>
+        <li>Salt and pepper to taste</li>
+    </ul>
+    <h3>Instructions:</h3>
+    <ol>
+        <li>Arrange tomato slices and mozzarella cheese slices on a serving platter, alternating.</li>
+        <li>Tuck fresh basil leaves between the tomato and cheese slices.</li>
+        <li>Drizzle balsamic glaze and extra virgin olive oil over the salad.</li>
+        <li>Season with salt and pepper to taste.</li>
+        <li>Serve immediately as an appetizer or side dish.</li>
+    </ol>
+</div>
+
+<!-- Recipe 11 -->
+<div class="recipe">
+    <h2>Vegetarian Quinoa Salad</h2>
+    <img src="11.webp" srcset="11.webp 500w, 11.webp 800w" alt="Vegetarian Quinoa Salad" style="width:100%;max-width:500px;height:auto;">
+    <h3>Ingredients:</h3>
+    <ul>
+        <li>1 cup quinoa, rinsed</li>
+        <li>2 cups water or vegetable broth</li>
+        <li>1 bell pepper, diced</li>
+        <li>1 cucumber, diced</li>
+        <li>1 cup cherry tomatoes, halved</li>
+        <li>1/4 cup red onion, diced</li>
+        <li>1/4 cup fresh parsley, chopped</li>
+        <li>1/4 cup olive oil</li>
+        <li>2 tablespoons lemon juice</li>
+        <li>1 teaspoon Dijon mustard</li>
+        <li>Salt and pepper to taste</li>
+    </ul>
+    <h3>Instructions:</h3>
+    <ol>
+        <li>In a saucepan, bring water or vegetable broth to a boil. Add quinoa, reduce heat to low, cover, and simmer for 15 minutes or until quinoa is cooked and water is absorbed.</li>
+        <li>Fluff cooked quinoa with a fork and let cool.</li>
+        <li>In a large bowl, combine cooked quinoa, diced bell pepper, cucumber, cherry tomatoes, red onion, and chopped parsley.</li>
+        <li>In a small bowl, whisk together olive oil, lemon juice, Dijon mustard, salt, and pepper.</li>
+        <li>Pour dressing over the salad and toss to combine.</li>
+        <li>Serve chilled or at room temperature.</li>
+    </ol>
+</div>
+
+
+<!-- Recipe 12 -->
+<div class="recipe">
+    <h2>BBQ Pulled Pork Sandwiches</h2>
+    <img src="12.webp" srcset="12.webp 500w, 12.webp 800w" alt="BBQ Pulled Pork Sandwiches" style="width:500px;height:600px;">
+    <h3>Ingredients:</h3>
+    <ul>
+        <li>2 lbs pork shoulder or pork butt</li>
+        <li>1 cup barbecue sauce</li>
+        <li>1/2 cup chicken broth or water</li>
+        <li>1 onion, sliced</li>
+        <li>2 cloves garlic, minced</li>
+        <li>1 tablespoon brown sugar</li>
+        <li>1 tablespoon apple cider vinegar</li>
+        <li>1 teaspoon smoked paprika</li>
+        <li>1/2 teaspoon chili powder</li>
+        <li>Salt and pepper to taste</li>
+        <li>Hamburger buns</li>
+        <li>Coleslaw (optional)</li>
+    </ul>
+    <h3>Instructions:</h3>
+    <ol>
+        <li>Season pork shoulder with salt, pepper, smoked paprika, and chili powder.</li>
+        <li>Place sliced onions and minced garlic in the bottom of a slow cooker. Place seasoned pork shoulder on top.</li>
+        <li>In a bowl, mix together barbecue sauce, chicken broth or water, brown sugar, and apple cider vinegar. Pour over the pork shoulder.</li>
+        <li>Cover and cook on low for 8-10 hours or on high for 4-5 hours, until pork is tender and easily shreds with a fork.</li>
+        <li>Remove pork from the slow cooker and shred using two forks. Return shredded pork to the slow cooker and stir to coat with the sauce.</li>
+        <li>Toast hamburger buns if desired and fill with BBQ pulled pork. Serve with coleslaw if desired.</li>
+    </ol>
+</div>
+
+<!-- Recipe 13 -->
+<div class="recipe">
+    <h2>Spinach and Feta Stuffed Chicken</h2>
+    <img src="13.webp" srcset="13.webp 500w, 13.webp 800w" alt="Spinach and Feta Stuffed Chicken" style="width:500px;height:600px;">
+    <h3>Ingredients:</h3>
+    <ul>
+        <li>4 boneless, skinless chicken breasts</li>
+        <li>2 cups fresh spinach leaves</li>
+        <li>1/2 cup crumbled feta cheese</li>
+        <li>2 cloves garlic, minced</li>
+        <li>1 tablespoon olive oil</li>
+        <li>Salt and pepper to taste</li>
+        <li>Toothpicks</li>
+    </ul>
+    <h3>Instructions:</h3>
+    <ol>
+        <li>Preheat oven to 375°F (190°C). Grease a baking dish.</li>
+        <li>Butterfly chicken breasts by slicing horizontally almost in half, leaving them attached on one side.</li>
+        <li>In a skillet, heat olive oil over medium heat. Add minced garlic and cook until fragrant.</li>
+        <li>Add fresh spinach leaves to the skillet and cook until wilted. Remove from heat and let cool slightly.</li>
+        <li>Stuff each chicken breast with cooked spinach and crumbled feta cheese.</li>
+        <li>Secure the openings with toothpicks to hold the stuffing inside.</li>
+        <li>Season stuffed chicken breasts with salt and pepper.</li>
+        <li>Place stuffed chicken breasts in the prepared baking dish and bake for 25-30 minutes, or until chicken is cooked through.</li>
+        <li>Remove toothpicks before serving.</li>
+    </ol>
+</div>
+
+<!-- Recipe 14 -->
+<div class="recipe">
+    <h2>Vegetable Curry</h2>
+    <img src="14.webp" srcset="14.webp 500w, 14.webp 800w" alt="Vegetable Curry" style="width:500px;height:600px;">
+    <h3>Ingredients:</h3>
+    <ul>
+        <li>2 tablespoons vegetable oil</li>
+        <li>1 onion, chopped</li>
+        <li>2 cloves garlic, minced</li>
+        <li>1 tablespoon curry powder</li>
+        <li>1 teaspoon ground turmeric</li>
+        <li>1 teaspoon ground cumin</li>
+        <li>1/2 teaspoon ground ginger</li>
+        <li>1/4 teaspoon cayenne pepper (optional)</li>
+        <li>2 cups mixed vegetables (potatoes, carrots, peas, bell peppers)</li>
+        <li>1 can (14 oz) coconut milk</li>
+        <li>1 cup vegetable broth</li>
+        <li>Salt and pepper to taste</li>
+        <li>Cooked rice or naan bread for serving</li>
+        <li>Fresh cilantro for garnish</li>
+    </ul>
+    <h3>Instructions:</h3>
+    <ol>
+        <li>In a large skillet or pot, heat vegetable oil over medium heat.</li>
+        <li>Add chopped onion and minced garlic. Sauté until onion is translucent.</li>
+        <li>Stir in curry powder, ground turmeric, ground cumin, ground ginger, and cayenne pepper (if using). Cook for 1 minute.</li>
+        <li>Add mixed vegetables to the skillet and toss to coat with the spice mixture.</li>
+        <li>Pour in coconut milk and vegetable broth. Bring to a simmer and cook until vegetables are tender.</li>
+        <li>Season with salt and pepper to taste.</li>
+        <li>Serve vegetable curry over cooked rice or with naan bread. Garnish with fresh cilantro.</li>
+    </ol>
+</div>
+
+<!-- Recipe 15 -->
+<div class="recipe">
+    <h2>Teriyaki Salmon</h2>
+    <img src="15.webp" srcset="15.webp 500w, 15.webp 800w" alt="Teriyaki Salmon" style="width:500px;height:600px;">
+    <h3>Ingredients:</h3>
+    <ul>
+        <li>4 salmon fillets</li>
+        <li>1/4 cup soy sauce</li>
+        <li>2 tablespoons honey</li>
+        <li>1 tablespoon rice vinegar</li>
+        <li>1 tablespoon sesame oil</li>
+        <li>2 cloves garlic, minced</li>
+        <li>1 teaspoon minced ginger</li>
+        <li>Sesame seeds for garnish</li>
+        <li>Sliced green onions for garnish</li>
+    </ul>
+    <h3>Instructions:</h3>
+    <ol>
+        <li>In a bowl, whisk together soy sauce, honey, rice vinegar, sesame oil, minced garlic, and minced ginger to make the teriyaki sauce.</li>
+        <li>Place salmon fillets in a shallow dish and pour half of the teriyaki sauce over them. Marinate for 30 minutes.</li>
+        <li>Preheat grill or grill pan to medium-high heat.</li>
+        <li>Remove salmon fillets from marinade and discard the marinade.</li>
+        <li>Grill salmon fillets for 4-5 minutes per side, or until cooked through and flaky.</li>
+        <li>Brush grilled salmon with the remaining teriyaki sauce.</li>
+        <li>Sprinkle with sesame seeds and sliced green onions before serving.</li>
+    </ol>
+</div>
+
+<!-- Recipe 16 -->
+<div class="recipe">
+    <h2>Chicken Parmesan</h2>
+    <img src="16.webp" srcset="16.webp 500w, 16.webp 800w" alt="Chicken Parmesan" style="width:500px;height:600px;">
+    <h3>Ingredients:</h3>
+    <ul>
+        <li>4 boneless, skinless chicken breasts</li>
+        <li>1 cup Italian breadcrumbs</li>
+        <li>1/2 cup grated Parmesan cheese</li>
+        <li>2 eggs, beaten</li>
+        <li>1 cup marinara sauce</li>
+        <li>1 cup shredded mozzarella cheese</li>
+        <li>1/4 cup chopped fresh basil</li>
+        <li>1/4 cup chopped fresh parsley</li>
+        <li>2 tablespoons olive oil</li>
+        <li>Salt and pepper to taste</li>
+    </ul>
+    <h3>Instructions:</h3>
+    <ol>
+        <li>Preheat oven to 400°F (200°C). Grease a baking dish.</li>
+        <li>Pound chicken breasts to even thickness and season with salt and pepper.</li>
+        <li>In a shallow dish, combine Italian breadcrumbs and grated Parmesan cheese.</li>
+        <li>Dip each chicken breast in beaten eggs, then coat with breadcrumb mixture.</li>
+        <li>Heat olive oil in a skillet over medium-high heat. Cook breaded chicken breasts until golden brown on both sides.</li>
+        <li>Transfer cooked chicken breasts to the prepared baking dish.</li>
+        <li>Top each chicken breast with marinara sauce and shredded mozzarella cheese.</li>
+        <li>Bake in the preheated oven for 20-25 minutes, or until chicken is cooked through and cheese is melted and bubbly.</li>
+        <li>Sprinkle with chopped fresh basil and parsley before serving.</li>
+    </ol>
+</div>
+
+<!-- Recipe 17 -->
+<div class="recipe">
+    <h2>Pad Thai</h2>
+    <img src="17.webp" srcset="17.webp 500w, 17.webp 800w" alt="Pad Thai" style="width:500px;height:600px;">
+    <h3>Ingredients:</h3>
+    <ul>
+        <li>8 oz rice noodles</li>
+        <li>2 chicken breasts, sliced</li>
+        <li>2 tablespoons vegetable oil</li>
+        <li>3 cloves garlic, minced</li>
+        <li>1 shallot, minced</li>
+        <li>2 eggs, beaten</li>
+        <li>1 cup bean sprouts</li>
+        <li>1/4 cup chopped peanuts</li>
+        <li>3 green onions, sliced</li>
+        <li>2 tablespoons fish sauce</li>
+        <li>2 tablespoons soy sauce</li>
+        <li>1 tablespoon brown sugar</li>
+        <li>1 tablespoon tamarind paste</li>
+        <li>1 tablespoon lime juice</li>
+        <li>1/2 teaspoon red pepper flakes</li>
+        <li>Lime wedges for serving</li>
+    </ul>
+    <h3>Instructions:</h3>
+    <ol>
+        <li>Cook rice noodles according to package instructions. Drain and set aside.</li>
+        <li>In a small bowl, whisk together fish sauce, soy sauce, brown sugar, tamarind paste, lime juice, and red pepper flakes to make the sauce.</li>
+        <li>Heat vegetable oil in a large skillet or wok over medium-high heat.</li>
+        <li>Add minced garlic and minced shallot to the skillet. Sauté until fragrant.</li>
+        <li>Add sliced chicken breasts to the skillet and cook until browned and cooked through.</li>
+        <li>Push chicken to one side of the skillet and pour beaten eggs into the empty side. Scramble until cooked.</li>
+        <li>Add cooked rice noodles, bean sprouts, chopped peanuts, sliced green onions, and prepared sauce to the skillet. Toss everything together until heated through.</li>
+        <li>Serve Pad Thai immediately, garnished with lime wedges.</li>
+    </ol>
+</div>
+
+<!-- Recipe 18 -->
+<div class="recipe">
+    <h2>Beef and Broccoli Stir-Fry</h2>
+    <img src="18.webp" srcset="18.webp 500w, 18.webp 800w" alt="Beef and Broccoli Stir-Fry" style="width:500px;height:600px;">
+    <h3>Ingredients:</h3>
+    <ul>
+        <li>1 lb flank steak, thinly sliced</li>
+        <li>1 lb broccoli florets</li>
+        <li>3 cloves garlic, minced</li>
+        <li>1/4 cup soy sauce</li>
+        <li>2 tablespoons oyster sauce</li>
+        <li>1 tablespoon brown sugar</li>
+        <li>1 tablespoon cornstarch</li>
+        <li>1/4 cup water</li>
+        <li>2 tablespoons vegetable oil</li>
+        <li>Sesame seeds for garnish</li>
+        <li>Sliced green onions for garnish</li>
+    </ul>
+    <h3>Instructions:</h3>
+    <ol>
+        <li>In a bowl, whisk together soy sauce, oyster sauce, brown sugar, cornstarch, and water to make the sauce.</li>
+        <li>Heat vegetable oil in a large skillet or wok over high heat.</li>
+        <li>Add minced garlic to the skillet and sauté until fragrant.</li>
+        <li>Add thinly sliced flank steak to the skillet and cook until browned.</li>
+        <li>Add broccoli florets to the skillet and cook until tender-crisp.</li>
+        <li>Pour the prepared sauce over the beef and broccoli. Cook, stirring constantly, until the sauce thickens.</li>
+        <li>Remove from heat and garnish with sesame seeds and sliced green onions before serving.</li>
+    </ol>
+</div>
+
+            `;
+        }
+
+        function showContactUs() {
+            document.getElementById('content').innerHTML = `
+                <div class="contact-form">
+                    <h2>Contact Us</h2>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                    
+                    <button type="submit">Submit</button>
+                </div>
+            `;
+        }
+
+        function showLocations() {
+            document.getElementById('content').innerHTML = `
+                <section id="location">
+                    <h2 style="color:white;">Our Locations</h2>
+                    <p>We have two convenient locations to serve you:</p>
+
+                    <div class="location">
+                        <h3>Jalandhar</h3>
+                        <p>123 Main Street, Jalandhar</p>
+                    </div>
+
+                    <div class="location">
+                        <h3>Phagwara</h3>
+                        <p>456 Temple Street, Phagwara</p>
+                    </div>
+                </section>
+            `;
+        }
+
+        function showErrorPage() {
+            document.getElementById('content').innerHTML = `
+                <h2 style="color: white;">Error 404: Page Not Found</h2>
+                <p style="color: white;">The requested page could not be found.</p>
+            `;
+        }
+
+        // Display home page by default
+        showHomePage();
+
+    </script>
+
+</body>
+</html>
